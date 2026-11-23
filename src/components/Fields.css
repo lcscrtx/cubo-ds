@@ -1,0 +1,82 @@
+/* Textarea, Select, Checkbox e RadioGroup.
+   Reaproveitam o rótulo, a ajuda e o erro de TextField.css (.hx-field__*). */
+
+/* ---------- Textarea ---------- */
+.hx-field__input.hx-textarea { min-height: calc(var(--hx-control-height) * 2.5); padding: 9px 12px; line-height: 1.5; resize: vertical; }
+.hx-textarea__count { margin: 0; font-size: var(--hx-font-size-micro); color: var(--hx-color-text-2); text-align: right; font-variant-numeric: tabular-nums; }
+.hx-textarea__count.is-near { color: var(--hx-color-warning); font-weight: var(--hx-font-weight-medium); }
+
+/* ---------- Select ---------- */
+.hx-select { position: relative; display: flex; }
+.hx-field__input.hx-select__control { width: 100%; appearance: none; -webkit-appearance: none; padding-right: 38px; cursor: pointer; }
+.hx-select__control:invalid { color: var(--hx-color-text-3); }
+.hx-select__control option { color: var(--hx-color-text); }
+.hx-select__chevron { position: absolute; right: 12px; top: 50%; width: 16px; height: 16px; translate: 0 -50%; color: var(--hx-color-text-2); pointer-events: none; }
+
+/* ---------- Checkbox e Radio ---------- */
+.hx-check { display: flex; flex-direction: column; }
+.hx-check__row {
+  display: flex; align-items: flex-start; gap: 10px;
+  min-height: var(--hx-control-height); padding: 8px 0;
+  cursor: pointer; font-size: var(--hx-font-size-small); line-height: 1.45; color: var(--hx-color-text);
+}
+.hx-check__label { padding-top: 0; }
+.hx-check__extra { padding-left: 30px; margin-top: -4px; }
+.hx-check__extra:empty, .hx-check__extra:has(> .hx-field__error:empty) { display: none; }
+
+/* A caixa visível; o input nativo fica por cima, transparente, recebendo clique e foco. */
+.hx-check__box, .hx-radio__dot {
+  position: relative; flex: none; width: 20px; height: 20px; margin-top: -1px;
+  border: 1.5px solid var(--hx-color-border-strong); background: var(--hx-color-bg);
+  transition: background var(--hx-motion-fast) var(--hx-motion-ease), border-color var(--hx-motion-fast) var(--hx-motion-ease);
+}
+.hx-check__box { border-radius: 5px; }
+.hx-radio__dot { border-radius: 50%; }
+.hx-check__input { position: absolute; inset: -1.5px; width: calc(100% + 3px); height: calc(100% + 3px); margin: 0; opacity: 0; cursor: pointer; }
+
+.hx-check__row:hover .hx-check__box, .hx-check__row:hover .hx-radio__dot { border-color: var(--hx-color-text-2); }
+
+/* Marcado */
+.hx-check__box:has(.hx-check__input:checked), .hx-check__box:has(.hx-check__input:indeterminate) { background: var(--hx-color-action); border-color: var(--hx-color-action); }
+.hx-check__mark { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); fill: none; stroke: var(--hx-color-on-accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.hx-check__tick { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 200ms var(--hx-motion-ease); }
+.hx-check__dash { opacity: 0; }
+.hx-check__box:has(.hx-check__input:checked) .hx-check__tick { stroke-dashoffset: 0; }
+.hx-check__box:has(.hx-check__input:indeterminate) .hx-check__tick { stroke-dashoffset: 1; }
+.hx-check__box:has(.hx-check__input:indeterminate) .hx-check__dash { opacity: 1; }
+
+.hx-radio__dot:has(.hx-check__input:checked) { border-color: var(--hx-color-action); border-width: 6px; }
+
+/* Foco no desenho, não no input invisível */
+.hx-check__box:has(.hx-check__input:focus-visible), .hx-radio__dot:has(.hx-check__input:focus-visible) {
+  outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: var(--hx-focus-offset);
+}
+
+/* Desativado */
+.hx-check__row:has(.hx-check__input:disabled) { cursor: not-allowed; color: var(--hx-color-text-2); }
+.hx-check__row:has(.hx-check__input:disabled) .hx-check__box,
+.hx-check__row:has(.hx-check__input:disabled) .hx-radio__dot { opacity: 0.5; }
+.hx-check__input:disabled { cursor: not-allowed; }
+
+/* Erro */
+.hx-check--invalid .hx-check__box, .hx-radio-group--invalid .hx-radio__dot { border-color: var(--hx-color-danger); }
+
+/* ---------- Grupo de rádio ---------- */
+.hx-radio-group { margin: 0; padding: 0; border: 0; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.hx-radio-group > legend { padding: 0; margin-bottom: 4px; }
+.hx-radio-group__options { display: flex; flex-direction: column; }
+.hx-radio-group--inline .hx-radio-group__options { flex-direction: row; flex-wrap: wrap; column-gap: 24px; }
+.hx-radio .hx-check__extra { display: block; }
+
+/* Celular: linha de 44px para o dedo. */
+@media (pointer: coarse) {
+  .hx-check__row { min-height: var(--hx-control-hit-area); align-items: center; padding: 6px 0; }
+}
+
+/* Alto contraste do Windows */
+@media (forced-colors: active) {
+  .hx-check__box, .hx-radio__dot { border-color: CanvasText; }
+  .hx-check__box:has(.hx-check__input:checked), .hx-check__box:has(.hx-check__input:indeterminate) { background: Highlight; border-color: Highlight; }
+  .hx-check__mark { stroke: HighlightText; }
+  .hx-radio__dot:has(.hx-check__input:checked) { border-color: Highlight; }
+}

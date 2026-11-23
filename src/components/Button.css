@@ -1,0 +1,53 @@
+.hx-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hx-space-2);
+  min-height: var(--hx-control-height);
+  min-width: var(--hx-control-height);
+  padding: 0 var(--hx-control-padding-x);
+  border: 1px solid transparent;
+  border-radius: var(--hx-radius-control);
+  font: var(--hx-font-weight-medium) var(--hx-control-font-size) / 1.2 var(--hx-font-sans);
+  text-decoration: none;
+  text-align: center;
+  /* Rótulo sempre em uma linha: botão que quebra fica com altura irregular e difícil de ler. */
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background var(--hx-motion-base) var(--hx-motion-ease),
+    border-color var(--hx-motion-base) var(--hx-motion-ease),
+    color var(--hx-motion-base) var(--hx-motion-ease);
+}
+/* Área de toque de 44px sem mudar o desenho (WCAG 2.5.5). */
+.hx-button::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--hx-control-height) - var(--hx-control-hit-area)) / 2) 0;
+}
+/* Foco sempre visível, mesmo fora de um .hx-root. */
+.hx-button:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: var(--hx-focus-offset); }
+/* Hover só troca cor: sem salto e sem sombra. */
+.hx-button:disabled,
+.hx-button[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
+
+.hx-button__icon { display: inline-flex; width: 16px; height: 16px; flex: none; }
+.hx-button__icon > svg { width: 100%; height: 100%; }
+
+.hx-button--primary { background: var(--hx-color-action); color: var(--hx-color-on-accent); }
+.hx-button--primary:hover:not(:disabled, [aria-disabled="true"]) { background: var(--hx-color-action-hover); }
+
+.hx-button--secondary { background: var(--hx-color-bg); color: var(--hx-color-text); border-color: var(--hx-color-border-strong); }
+.hx-button--secondary:hover:not(:disabled, [aria-disabled="true"]) { border-color: var(--hx-color-text-2); }
+
+/* Ghost sublinha no hover: a mudança não depende só de cor (WCAG 1.4.1). */
+.hx-button--ghost { background: transparent; color: var(--hx-color-action); }
+.hx-button--ghost:hover:not(:disabled, [aria-disabled="true"]) { background: var(--hx-color-accent-50); color: var(--hx-color-action-hover); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Alto contraste do Windows: borda visível em todas as variantes. */
+@media (forced-colors: active) {
+  .hx-button { border-color: ButtonText; }
+  .hx-button:focus-visible { outline-color: Highlight; }
+}

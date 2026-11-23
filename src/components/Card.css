@@ -1,0 +1,17 @@
+.hx-card {
+  padding: var(--hx-space-6);
+  border-radius: var(--hx-radius-lg);
+  background: var(--hx-color-bg);
+  border: 1px solid var(--hx-color-border-soft);
+  transition: border-color var(--hx-motion-slow) var(--hx-motion-ease), box-shadow var(--hx-motion-slow) var(--hx-motion-ease);
+}
+.hx-card--panel { background: var(--hx-color-panel); border-color: transparent; }
+.hx-card--elevated { border-color: transparent; box-shadow: var(--hx-shadow-lg); }
+.hx-card--interactive { cursor: pointer; }
+/* Hover discreto: só a borda escurece. */
+.hx-card--interactive:hover { border-color: var(--hx-color-border); }
+.hx-card--interactive:focus-within { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: var(--hx-focus-offset); }
+
+@media (forced-colors: active) {
+  .hx-card { border-color: CanvasText; }
+}

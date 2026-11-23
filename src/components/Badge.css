@@ -1,0 +1,26 @@
+.hx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: var(--hx-radius-control);
+  font: var(--hx-font-weight-medium) var(--hx-font-size-micro) / 1.2 var(--hx-font-sans);
+  white-space: nowrap;
+}
+.hx-badge__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.hx-badge:has(.hx-si, .hx-badge__icon) { padding-left: 7px; gap: 5px; }
+.hx-badge__icon { display: inline-flex; width: 14px; height: 14px; }
+.hx-badge__icon > svg { width: 100%; height: 100%; }
+
+/* Todos os tons passam 4,5:1 entre texto e fundo. */
+.hx-badge--neutral { background: var(--hx-color-surface); color: var(--hx-color-text-2); box-shadow: inset 0 0 0 1px var(--hx-color-border); }
+.hx-badge--accent { background: var(--hx-color-accent-50); color: var(--hx-color-action-hover); }
+.hx-badge--success { background: var(--hx-color-success-soft); color: var(--hx-color-success); }
+.hx-badge--warning { background: var(--hx-color-warning-soft); color: var(--hx-color-warning); }
+.hx-badge--danger { background: var(--hx-color-danger-soft); color: var(--hx-color-danger); }
+
+/* Alto contraste do Windows: o fundo some, então a etiqueta ganha borda. */
+@media (forced-colors: active) {
+  .hx-badge { border: 1px solid CanvasText; box-shadow: none; }
+}

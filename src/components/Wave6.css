@@ -1,0 +1,78 @@
+/* MaskedField, DateField, Menu, Avatar e Progress (onda 6) */
+
+/* ---------- MaskedField ---------- */
+.hx-masked { font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
+
+/* ---------- DateField ---------- */
+.hx-date { position: relative; display: flex; max-width: 220px; }
+.hx-field__input.hx-date__input { width: 100%; padding-right: 44px; font-variant-numeric: tabular-nums; }
+.hx-date__btn {
+  position: absolute; right: 4px; top: 50%; translate: 0 -50%;
+  display: grid; place-items: center; width: 30px; height: 30px;
+  border: 0; border-radius: var(--hx-radius-sm); background: transparent; color: var(--hx-color-text-2); cursor: pointer;
+}
+.hx-date__btn::after { content: ""; position: absolute; inset: -7px; }
+.hx-date__btn:hover { background: var(--hx-color-surface); color: var(--hx-color-text); }
+.hx-date__btn:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: 0; }
+.hx-date__btn svg { width: 18px; height: 18px; }
+.hx-date__native { position: absolute; right: 0; bottom: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: 0; padding: 0; }
+
+/* ---------- Menu ---------- */
+.hx-menu { position: relative; display: inline-flex; }
+.hx-menu__chev { width: 16px; height: 16px; }
+.hx-menu__button[aria-expanded="true"] { background: var(--hx-color-surface); }
+.hx-menu__list {
+  position: fixed; z-index: 1100; min-width: 200px; max-width: min(320px, calc(100vw - 16px));
+  margin: 0; padding: 4px; list-style: none;
+  border: 1px solid var(--hx-color-border); border-radius: var(--hx-radius-md);
+  background: var(--hx-color-bg); box-shadow: var(--hx-shadow-lg);
+  animation: hx-menu-in 120ms var(--hx-motion-ease);
+}
+@keyframes hx-menu-in { from { opacity: 0; transform: translateY(-4px); } }
+.hx-menu__sep { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--hx-color-border-soft); }
+.hx-menu__item {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  min-height: var(--hx-control-height); padding: 0 10px;
+  border: 0; border-radius: var(--hx-radius-sm); background: transparent; text-align: left;
+  font: var(--hx-font-weight-regular) var(--hx-font-size-small) var(--hx-font-sans); color: var(--hx-color-text); cursor: pointer;
+}
+.hx-menu__item:focus { outline: none; background: var(--hx-color-accent-50); }
+.hx-menu__item:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: -2px; }
+.hx-menu__item.is-danger { color: var(--hx-color-danger); }
+.hx-menu__item.is-danger:focus { background: var(--hx-color-danger-soft); }
+.hx-menu__item[aria-disabled="true"] { color: var(--hx-color-text-3); cursor: not-allowed; }
+.hx-menu__icon { display: inline-flex; width: 16px; height: 16px; flex: none; }
+.hx-menu__icon > svg { width: 100%; height: 100%; }
+@media (pointer: coarse) { .hx-menu__item { min-height: var(--hx-control-hit-area); } }
+@media (forced-colors: active) {
+  .hx-menu__list { border-color: CanvasText; }
+  .hx-menu__item:focus { outline: 2px solid Highlight; }
+}
+
+/* ---------- Avatar ---------- */
+.hx-avatar {
+  display: inline-grid; place-items: center; flex: none; overflow: hidden; border-radius: 50%;
+  background: var(--hx-color-accent-100); color: var(--hx-color-action-hover);
+  font-family: var(--hx-font-sans); font-weight: var(--hx-font-weight-medium); line-height: 1; user-select: none;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+}
+.hx-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.hx-avatar--28 { width: 28px; height: 28px; font-size: 13px; }
+.hx-avatar--36 { width: 36px; height: 36px; font-size: 14px; }
+.hx-avatar--48 { width: 48px; height: 48px; font-size: 17px; }
+@media (forced-colors: active) { .hx-avatar { border: 1px solid CanvasText; } }
+
+/* ---------- Progress ---------- */
+.hx-progress { display: flex; flex-direction: column; gap: 6px; font-family: var(--hx-font-sans); }
+.hx-progress__head { display: flex; justify-content: space-between; gap: 12px; font-size: var(--hx-font-size-small); }
+.hx-progress__label { color: var(--hx-color-text); font-weight: var(--hx-font-weight-medium); }
+.hx-progress__value { color: var(--hx-color-text-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hx-progress__track { position: relative; height: 8px; border-radius: 8px; overflow: hidden; background: var(--hx-color-border-soft); box-shadow: inset 0 0 0 1px var(--hx-color-border); }
+.hx-progress__fill { position: absolute; inset: 0 auto 0 0; border-radius: 8px; background: var(--hx-color-action); transition: width var(--hx-motion-slow) var(--hx-motion-ease); }
+.hx-progress--success .hx-progress__fill { background: var(--hx-color-success); }
+.hx-progress--warning .hx-progress__fill { background: var(--hx-color-warning); }
+.hx-progress--danger .hx-progress__fill { background: var(--hx-color-danger); }
+/* Indeterminado: um trecho corre 3 vezes e para no meio (menos de 5 s). O texto "Em andamento" continua. */
+.hx-progress--indeterminate .hx-progress__fill { width: 35%; left: 32%; animation: hx-progress-run 1.5s ease-in-out 3; }
+@keyframes hx-progress-run { from { left: -35%; } to { left: 100%; } }
+@media (forced-colors: active) { .hx-progress__fill { background: Highlight; } }

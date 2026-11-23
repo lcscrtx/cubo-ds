@@ -1,0 +1,75 @@
+/* Base mínima. Só age dentro de .hx-root, para não sujar a página de quem usa o pacote. */
+:where(.hx-root) {
+  font-family: var(--hx-font-sans);
+  font-size: var(--hx-font-size-body);
+  line-height: var(--hx-line-height-normal);
+  color: var(--hx-color-text);
+  background: var(--hx-color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Respeita o tamanho de fonte que a pessoa escolheu no navegador ao ampliar. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Foco visível em tudo que recebe teclado (WCAG 2.4.7). */
+:where(.hx-root) :focus-visible {
+  outline: var(--hx-focus-width) solid var(--hx-color-action);
+  outline-offset: var(--hx-focus-offset);
+}
+
+/* =========================================================
+   Preferências da pessoa.
+   Valem tanto pela configuração do sistema (media queries) quanto
+   por escolha manual na tela, com atributos em qualquer ancestral:
+     data-contrast="more"   → mais contraste
+     data-motion="reduce"   → sem movimento
+   Assim cada produto pode ter a sua barra de acessibilidade.
+   ========================================================= */
+
+/* Mais contraste: texto secundário escurece e bordas ficam fortes.
+   Redefinidas no .hx-root, que fica mais perto da peça do que o tema do :root. */
+@media (prefers-contrast: more) {
+  html .hx-root {
+    --hx-color-text-3: var(--hx-color-text-2);
+    --hx-color-text-2: var(--hx-color-text);
+    --hx-color-border: var(--hx-color-border-strong);
+    --hx-color-border-soft: var(--hx-color-border-strong);
+  }
+}
+[data-contrast="more"] .hx-root {
+  --hx-color-text-3: var(--hx-color-text-2);
+  --hx-color-text-2: var(--hx-color-text);
+  --hx-color-border: var(--hx-color-border-strong);
+  --hx-color-border-soft: var(--hx-color-border-strong);
+  --hx-color-accent-50: var(--hx-color-bg);
+  --hx-color-panel: var(--hx-color-bg);
+}
+
+/* Sem movimento: nenhuma animação nem transição. */
+@media (prefers-reduced-motion: reduce) {
+  :where(.hx-root) *,
+  :where(.hx-root) *::before,
+  :where(.hx-root) *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+[data-motion="reduce"] *,
+[data-motion="reduce"] *::before,
+[data-motion="reduce"] *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Texto só para leitor de tela: some da tela, continua no leitor. */
+.hx-sr {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+
+/* Tamanho do texto escolhido na AccessibilityBar (data-text no <html>). */
+html[data-text="1"] body { zoom: 1.125; }
+html[data-text="2"] body { zoom: 1.25; }

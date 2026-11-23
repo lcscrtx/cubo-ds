@@ -1,0 +1,35 @@
+.hx-field { display: flex; flex-direction: column; gap: 6px; }
+.hx-field__label { font: var(--hx-font-weight-medium) var(--hx-font-size-small) / 1.4 var(--hx-font-sans); color: var(--hx-color-text); }
+.hx-field__req { font-weight: var(--hx-font-weight-regular); color: var(--hx-color-text-2); }
+/* A ajuda vem antes do campo: quem usa lupa de tela lê o formato antes de digitar. */
+.hx-field__hint { margin: 0; font-size: var(--hx-font-size-micro); line-height: 1.45; color: var(--hx-color-text-2); }
+.hx-field__input {
+  min-height: var(--hx-control-height);
+  padding: 0 12px;
+  border: 1px solid var(--hx-color-border-strong);
+  border-radius: var(--hx-radius-sm);
+  background: var(--hx-color-bg);
+  color: var(--hx-color-text);
+  font: var(--hx-font-weight-regular) var(--hx-control-font-size) / 1.3 var(--hx-font-sans);
+  transition: border-color var(--hx-motion-base) var(--hx-motion-ease);
+}
+/* Placeholder com o mesmo contraste do texto secundário (4,5:1 ou mais). */
+.hx-field__input::placeholder { color: var(--hx-color-text-3); opacity: 1; }
+.hx-field__input:hover:not(:disabled) { border-color: var(--hx-color-text-2); }
+/* Foco: anel de 2px na cor de ação, visível em qualquer fundo. */
+.hx-field__input:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: 0; border-color: var(--hx-color-action); }
+.hx-field__input:disabled { background: var(--hx-color-surface); color: var(--hx-color-text-2); border-color: var(--hx-color-border); cursor: not-allowed; }
+.hx-field__error { display: flex; align-items: flex-start; gap: 6px; margin: 0; font-size: var(--hx-font-size-micro); line-height: 1.45; color: var(--hx-color-danger); }
+.hx-field__error:empty { display: none; }
+.hx-field__error svg { width: 15px; height: 15px; flex: none; margin-top: 1px; }
+.hx-field--invalid .hx-field__input { border-color: var(--hx-color-danger); }
+.hx-field--invalid .hx-field__input:focus-visible { outline-color: var(--hx-color-danger); }
+
+/* Celular: 16px no campo evita o zoom automático do iOS e melhora a leitura. */
+@media (pointer: coarse) {
+  .hx-field__input { min-height: var(--hx-control-hit-area); font-size: 16px; }
+}
+
+@media (forced-colors: active) {
+  .hx-field__input:focus-visible { outline-color: Highlight; }
+}

@@ -1,0 +1,43 @@
+/* Página não rola por trás da janela aberta. */
+html.hx-dialog-open { overflow: hidden; }
+
+.hx-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0; border: 1px solid var(--hx-color-border); border-radius: var(--hx-radius-lg);
+  background: var(--hx-color-bg); color: var(--hx-color-text);
+  box-shadow: var(--hx-shadow-lg);
+  font-family: var(--hx-font-sans);
+}
+.hx-dialog::backdrop { background: rgb(12 14 20 / 0.5); }
+.hx-dialog[open] { animation: hx-dialog-in 180ms var(--hx-motion-ease); }
+.hx-dialog[open]::backdrop { animation: hx-fade-in 180ms ease; }
+@keyframes hx-dialog-in { from { opacity: 0; transform: translateY(8px); } }
+@keyframes hx-fade-in { from { opacity: 0; } }
+
+.hx-dialog__box { display: flex; flex-direction: column; gap: 4px; padding: 20px 24px 24px; }
+.hx-dialog__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.hx-dialog__title { margin: 4px 0 0; font-family: var(--hx-font-display); font-size: var(--hx-font-size-h3); font-weight: var(--hx-font-weight-heading); letter-spacing: var(--hx-tracking-heading); line-height: 1.3; }
+.hx-dialog__close {
+  position: relative; display: grid; place-items: center; flex: none;
+  width: var(--hx-control-height); height: var(--hx-control-height); margin: -2px -8px 0 0;
+  border: 0; border-radius: var(--hx-radius-sm); background: transparent; color: var(--hx-color-text-2); cursor: pointer;
+}
+.hx-dialog__close::after { content: ""; position: absolute; inset: -4px; }
+.hx-dialog__close:hover { background: var(--hx-color-surface); color: var(--hx-color-text); }
+.hx-dialog__close:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: 0; }
+.hx-dialog__close svg { width: 18px; height: 18px; }
+.hx-dialog__desc { margin: 0; font-size: var(--hx-font-size-small); color: var(--hx-color-text-2); }
+.hx-dialog__body { margin-top: 12px; font-size: var(--hx-font-size-small); }
+.hx-dialog__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+
+/* Celular: janela vira folha presa embaixo, mais fácil de alcançar com o polegar. */
+@media (max-width: 600px) {
+  .hx-dialog { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: var(--hx-radius-lg) var(--hx-radius-lg) 0 0; }
+  .hx-dialog__actions { flex-direction: column-reverse; }
+  .hx-dialog__actions > * { width: 100%; }
+}
+
+@media (forced-colors: active) {
+  .hx-dialog { border-color: CanvasText; }
+}

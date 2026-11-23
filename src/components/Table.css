@@ -1,0 +1,35 @@
+.hx-table { position: relative; }
+.hx-table__scroll { overflow-x: auto; border: 1px solid var(--hx-color-border); border-radius: var(--hx-radius-md); background: var(--hx-color-bg); }
+.hx-table__scroll:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: var(--hx-focus-offset); }
+.hx-table__table { width: 100%; border-collapse: collapse; font-size: var(--hx-font-size-small); font-variant-numeric: tabular-nums; }
+.hx-table__caption { padding: 14px 16px 10px; text-align: left; font-weight: var(--hx-font-weight-strong); color: var(--hx-color-text); caption-side: top; }
+
+.hx-table__table th, .hx-table__table td { padding: 10px 16px; text-align: left; vertical-align: middle; border-top: 1px solid var(--hx-color-border-soft); }
+.hx-table__table thead th {
+  border-top: 0; background: var(--hx-color-surface);
+  font-size: var(--hx-font-size-micro); font-weight: var(--hx-font-weight-medium); color: var(--hx-color-text-2); white-space: nowrap;
+}
+.hx-table__table tbody th { font-weight: var(--hx-font-weight-medium); color: var(--hx-color-text); }
+.hx-table__table td { color: var(--hx-color-text-2); }
+.hx-table__table .is-end { text-align: right; }
+.hx-table__table tbody tr:hover { background: var(--hx-color-surface); }
+.hx-table__empty { padding: 32px 16px !important; text-align: center !important; color: var(--hx-color-text-2); }
+
+/* Cabeçalho ordenável: o botão ocupa a célula toda. */
+.hx-table__sort {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 28px; margin: -4px -6px; padding: 0 6px;
+  border: 0; border-radius: var(--hx-radius-sm); background: transparent;
+  font: inherit; color: inherit; cursor: pointer;
+}
+.hx-table__sort:hover { color: var(--hx-color-text); background: var(--hx-color-border-soft); }
+.hx-table__sort:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: 0; }
+.hx-table__sort svg { width: 14px; height: 14px; }
+.hx-table__sort svg path { opacity: 0.35; }
+.hx-table__sort svg[data-dir="ascending"] .hx-table__up,
+.hx-table__sort svg[data-dir="descending"] .hx-table__down { opacity: 1; }
+th[aria-sort="ascending"], th[aria-sort="descending"] { color: var(--hx-color-text); }
+.is-end .hx-table__sort { flex-direction: row-reverse; }
+
+@media (forced-colors: active) {
+  .hx-table__scroll { border-color: CanvasText; }
+}

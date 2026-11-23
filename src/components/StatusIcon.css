@@ -1,0 +1,49 @@
+.hx-si { width: 14px; height: 14px; flex: none; overflow: visible; }
+
+/* Estados finais: desenha uma vez e para. */
+.hx-si--animated .hx-si__draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: hx-si-draw 420ms var(--hx-motion-ease) 80ms forwards; }
+.hx-si--animated .hx-si__draw--2 { animation-delay: 300ms; }
+@keyframes hx-si-draw { to { stroke-dashoffset: 0; } }
+
+/* Regra de acessibilidade: nenhuma animação passa de 5 segundos (WCAG 2.2.2).
+   As de estado em curso repetem algumas vezes e param na posição de descanso. */
+
+/* Em andamento: gira e para. */
+.hx-si--animated .hx-si__spin { transform-origin: 8px 8px; animation: hx-si-spin 900ms linear 5; }
+@keyframes hx-si-spin { to { transform: rotate(360deg); } }
+
+/* Em análise: a lupa percorre de um lado a outro. */
+.hx-si--animated .hx-si__scan { animation: hx-si-scan 2.4s var(--hx-motion-ease) 2; }
+@keyframes hx-si-scan {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(1.5px, 0.5px); }
+}
+
+/* Aguardando: a ampulheta vira, espera e vira de novo. */
+.hx-si--animated .hx-si__flip { transform-origin: 8px 8px; animation: hx-si-flip 3s var(--hx-motion-ease) 1; }
+@keyframes hx-si-flip {
+  0%, 30% { transform: rotate(0deg); }
+  45%, 70% { transform: rotate(180deg); }
+  85%, 100% { transform: rotate(360deg); }
+}
+
+/* Pendente: o ponteiro anda devagar. */
+.hx-si--animated .hx-si__hand { transform-origin: 8px 8px; animation: hx-si-spin 4.8s linear 1; }
+
+/* Alerta: a exclamação pisca devagar. */
+.hx-si--animated .hx-si__blink { animation: hx-si-blink 1.6s ease-in-out 3; }
+@keyframes hx-si-blink { 50% { opacity: 0.25; } }
+
+/* Novo: anel que se expande e some. */
+.hx-si__ping { opacity: 0; }
+.hx-si--animated .hx-si__ping { transform-origin: 8px 8px; animation: hx-si-ping 1.8s ease-out 2; }
+@keyframes hx-si-ping {
+  0% { opacity: 0.6; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hx-si *, .hx-si { animation: none !important; }
+  .hx-si__draw { stroke-dashoffset: 0 !important; }
+}
+[data-motion="reduce"] .hx-si__draw { stroke-dashoffset: 0 !important; }

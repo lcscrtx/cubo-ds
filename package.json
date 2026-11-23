@@ -1,0 +1,64 @@
+{
+  "name": "@cubo-tecnologia/hexagon",
+  "version": "0.1.0",
+  "description": "Design system acessível da Cubo Tecnologia, feito para o serviço público.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./dist/tokens.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "node scripts/build-tokens.mjs && vite --config site/vite.config.ts",
+    "build:site": "node scripts/build-tokens.mjs && vite build --config site/vite.config.ts",
+    "build": "node scripts/build-tokens.mjs && tsup && node scripts/build-css.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^1.11.0",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "axe-core": "^4.14.1",
+    "jsdom": "^26.1.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.6",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.3.8",
+    "vitest": "^3.2.7",
+    "zod": "^4.6.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "cubo",
+    "acessibilidade"
+  ]
+}

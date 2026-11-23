@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+
+# Chaves locais (assistente)
+.env
+.env.*
+!.env.example
+
+dist-site/
+.vercel
+Thumbs.db
+
+# Arquivo do Figma: só a versão criptografada vai para o site
+*.fig

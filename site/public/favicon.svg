@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 37.759 37.504">
+  <defs>
+    <style>
+      .cls-1{fill:#1552e1}@media (prefers-color-scheme: dark){.cls-1{fill:#ffffff}}
+    </style>
+  </defs>
+  <title>Hexagon</title>
+  <g id="Asset_1" data-name="Asset 1">
+    <g>
+      <path d="M13.833 0 L23.926 0 L23.926 10.094 L13.833 10.094 Z" class="cls-1"/>
+      <path d="M23.926 37.504 L13.833 37.504 L13.833 27.411 L23.926 27.411 Z" class="cls-1"/>
+      <path d="M0 13.597 L5.155 4.919 L13.833 10.074 L8.678 18.752 Z" class="cls-1"/>
+      <path d="M37.759 23.907 L32.604 32.585 L23.926 27.43 L29.082 18.752 Z" class="cls-1"/>
+      <path d="M0 23.907 L5.155 32.585 L13.833 27.43 L8.678 18.752 Z" class="cls-1"/>
+      <path d="M37.759 13.597 L32.604 4.919 L23.926 10.074 L29.082 18.752 Z" class="cls-1"/>
+    </g>
+  </g>
+</svg>

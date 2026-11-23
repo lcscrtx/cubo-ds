@@ -1,0 +1,38 @@
+/* Laboratório: protótipo do assistente de compreensão */
+.a-page { flex: 1; max-width: 1180px; width: 100%; margin: 0 auto; padding: 24px 24px 96px; }
+.a-lab { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 24px; font-size: 14px; color: var(--hx-color-text-2); }
+.a-lab a { color: var(--hx-color-action); }
+.a-lab__tag { padding: 1px 8px; border-radius: 999px; background: var(--hx-color-text); color: var(--hx-color-bg); font-size: 13px; font-weight: 500; }
+
+.a-service { display: flex; flex-direction: column; gap: 24px; }
+
+.a-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 32px; align-items: start; }
+.a-info { font-size: 16px; line-height: 1.65; color: var(--hx-color-text); }
+.a-info h2 { margin: 28px 0 8px; font-size: 18px; font-weight: var(--hx-font-weight-heading); }
+.a-info h2:first-child { margin-top: 0; }
+.a-info p, .a-info ul { margin: 0; color: var(--hx-color-text-2); }
+.a-info ul { padding-left: 20px; }
+.a-form { padding: 20px; }
+.a-form__fields { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+.a-form__fields .hx-button { align-self: flex-start; }
+
+/* Resposta no painel */
+.a-res { display: flex; flex-direction: column; gap: 20px; font-size: 16px; line-height: 1.6; color: var(--hx-color-text); }
+.a-res__lead { margin: 0; font-size: 17px; }
+.a-res__sec h3 { margin: 0 0 6px; font-size: 16px; font-weight: var(--hx-font-weight-heading); }
+.a-res__sec p { margin: 0; }
+.a-res__sec ol, .a-res__sec ul { margin: 0; padding-left: 22px; }
+.a-res__sec li + li { margin-top: 4px; }
+
+.a-lido { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--hx-color-border-soft); font-size: 14px; color: var(--hx-color-text-2); }
+.a-lido summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--hx-color-text); font-weight: 500; }
+.a-lido summary:focus-visible { outline: var(--hx-focus-width) solid var(--hx-color-action); outline-offset: 2px; }
+.a-lido p { margin: 4px 0 8px; }
+.a-lido pre { max-height: 280px; overflow: auto; margin: 0; padding: 12px; border-radius: 8px; background: var(--hx-color-surface); font: 400 12px/1.5 var(--s-mono); color: var(--hx-color-text); }
+
+@media (max-width: 900px) {
+  .a-cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .a-page { padding: 16px 16px 64px; }
+}
