@@ -3,7 +3,8 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Dialog } from "@cubo-tecnologia/hexagon";
-import { NAV } from "./docs/nav";
+import { MOBILE_GROUPS, NAV } from "./docs/nav";
+import { MOBILE } from "./docs/mobile";
 import { COMPONENTES } from "./docs/componentes";
 import { SECOES } from "./docs/secoes";
 
@@ -54,11 +55,12 @@ const SINONIMOS: Record<string, string> = {
 };
 
 const sem = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-const DOCS = { ...SECOES, ...COMPONENTES } as Record<string, { lead: unknown }>;
+const DOCS = { ...SECOES, ...COMPONENTES, ...MOBILE } as Record<string, { lead: unknown }>;
 
 type Item = { slug: string; title: string; to: string; group: string; desc: string; hay: string; syn: string };
 
-const ITENS: Item[] = NAV.flatMap((g) =>
+const GRUPOS = [...NAV, ...MOBILE_GROUPS.map((g) => ({ ...g, title: g.title === "Mobile" ? g.title : `Mobile · ${g.title}` }))];
+const ITENS: Item[] = GRUPOS.flatMap((g) =>
   g.items.map((i) => {
     const lead = DOCS[i.slug]?.lead;
     const desc = typeof lead === "string" ? lead : "";

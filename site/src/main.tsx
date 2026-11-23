@@ -22,6 +22,7 @@ import "../../src/components/Wave8.css";
 import "./site.css";
 import "./home/home.css";
 import "./chrome.css";
+import "./mobile/mobile.css";
 import { App } from "./App";
 
 createRoot(document.getElementById("root")!).render(

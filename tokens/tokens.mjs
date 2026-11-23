@@ -194,3 +194,24 @@ export const dark = {
     lg: "0 1px 3px rgb(0 0 0 / 0.5), 0 8px 24px -8px rgb(0 0 0 / 0.6)",
   },
 };
+
+// =========================================================
+// Mobile (React Native)
+// Cores, raio, espaço e sombra são os mesmos da web. Aqui fica só o que muda no celular:
+// escala de texto fixa (a pessoa amplia pela fonte do sistema) e alvo de toque maior.
+// =========================================================
+export const mobile = {
+  // [tamanho, entrelinha], em pontos.
+  type: {
+    display: [32, 38],
+    h1: [28, 34],
+    h2: [22, 28],
+    h3: [18, 24],
+    body: [16, 24],
+    small: [14, 20],
+    caption: [13, 18],
+  },
+  // 48 atende o mínimo do Android (48dp) e passa o do iOS (44pt) e o da WCAG 2.5.5 (44px).
+  touch: 48,
+  gutter: 16,
+};

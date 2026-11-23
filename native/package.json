@@ -1,0 +1,17 @@
+{
+  "name": "@cubo-tecnologia/hexagon-native",
+  "version": "0.1.0",
+  "description": "Design system Hexagon para React Native: componentes acessíveis para o serviço público.",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "react-native": "src/index.ts",
+  "types": "src/index.ts",
+  "sideEffects": false,
+  "files": ["src"],
+  "peerDependencies": {
+    "react": ">=19",
+    "react-native": ">=0.81",
+    "react-native-svg": ">=15"
+  },
+  "publishConfig": { "access": "public" }
+}

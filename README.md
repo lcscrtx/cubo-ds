@@ -15,6 +15,7 @@ npm run typecheck
 
 - `tokens/tokens.mjs`: fonte única dos tokens (`base`, `theme` e `dark`).
 - `src/components/`: um `.tsx` e um `.css` por componente, classes com prefixo `hx-`.
+- `native/`: pacote React Native (`@cubo-tecnologia/hexagon-native`), com os mesmos tokens. Documentação em `/docs/mobile`.
 - `site/`: site de documentação. Usa o código de `src/` direto, sem build.
 
 ## Uso (quando publicado)
@@ -35,6 +36,19 @@ Para adaptar a outro produto, sobrescreva os tokens depois do CSS:
   --hx-color-action: #1552e1;
   --hx-radius-control: 6px;
 }
+```
+
+## Mobile (React Native)
+
+Piloto com 13 componentes: Button, IconButton, ScreenHeader, BottomNav, TextField, Select, Checkbox, Switch, Alert, Badge, Card, ListItem e BottomSheet.
+O tema nativo é gerado de `tokens/tokens.mjs`. Falta conferir em aparelho, com TalkBack e VoiceOver.
+
+```tsx
+import { Button, HexagonProvider } from "@cubo-tecnologia/hexagon-native";
+
+<HexagonProvider>
+  <Button onPress={enviar}>Enviar solicitação</Button>
+</HexagonProvider>
 ```
 
 ## Ondas

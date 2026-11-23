@@ -63,5 +63,18 @@ export const NAV: NavGroup[] = [
   },
 ];
 
+const mob = (slug: string, title: string): NavItem => ({ slug: `m-${slug}`, title, to: slug === "introducao" ? "/docs/mobile" : `/docs/mobile/${slug}` });
+
+/** Pacote React Native. Tem menu próprio, para não misturar com os componentes da web. */
+export const MOBILE_GROUPS: NavGroup[] = [
+  { title: "Mobile", items: [mob("introducao", "Introdução"), mob("fundacao", "Fundação mobile")] },
+  { title: "Ações", items: [mob("button", "Button"), mob("icon-button", "IconButton")] },
+  { title: "Navegação", items: [mob("screen-header", "ScreenHeader"), mob("bottom-nav", "BottomNav")] },
+  { title: "Campos", items: [mob("text-field", "TextField"), mob("select", "Select"), mob("checkbox", "Checkbox"), mob("switch", "Switch")] },
+  { title: "Feedback e estado", items: [mob("alert", "Alert"), mob("badge", "Badge")] },
+  { title: "Estrutura e conteúdo", items: [mob("card", "Card"), mob("list-item", "ListItem"), mob("bottom-sheet", "BottomSheet")] },
+];
+
 export const FLAT_NAV: NavItem[] = NAV.flatMap((g) => g.items);
+export const FLAT_MOBILE: NavItem[] = MOBILE_GROUPS.flatMap((g) => g.items);
 export const COMPONENT_GROUPS = NAV.slice(1);

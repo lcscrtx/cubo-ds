@@ -10,9 +10,27 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "allowJs": true,
-    "paths": { "@cubo-tecnologia/hexagon": ["./src/index.ts"] },
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["vite/client"]
+    "paths": {
+      "@cubo-tecnologia/hexagon": [
+        "./src/index.ts"
+      ],
+      "@cubo-tecnologia/hexagon-native": [
+        "./native/src/index.ts"
+      ]
+    },
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "vite/client"
+    ]
   },
-  "include": ["src", "site/src", "tests"]
+  "include": [
+    "src",
+    "site/src",
+    "tests",
+    "native/src"
+  ]
 }

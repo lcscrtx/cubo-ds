@@ -14,7 +14,12 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@cubo-tecnologia/hexagon": fileURLToPath(new URL("../src/index.ts", import.meta.url)),
+      "@cubo-tecnologia/hexagon-native": fileURLToPath(new URL("../native/src/index.ts", import.meta.url)),
+      // A documentação mobile roda os componentes React Native no navegador.
+      "react-native": "react-native-web",
     },
+    // Arquivos .web.tsx vencem os nativos, como no Metro.
+    extensions: [".web.tsx", ".web.ts", ".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"],
   },
   // host: true abre o servidor na rede local, para testar no celular pelo Wi-Fi.
   server: { port: 5700, host: true },

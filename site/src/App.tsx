@@ -30,6 +30,8 @@ export function App() {
         <Route path="/" element={<Home />} />
         <Route path="/docs" element={<DocsLayout />}>
           <Route index element={<DocPage slug="introducao" />} />
+          <Route path="mobile" element={<DocPage slug="introducao" mobile />} />
+          <Route path="mobile/:slug" element={<DocPage mobile />} />
           <Route path=":slug" element={<DocPage />} />
           <Route path="componentes/:slug" element={<DocPage />} />
         </Route>

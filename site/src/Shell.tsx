@@ -35,6 +35,7 @@ export function Header({ prefs, onPrefsChange, onSearch }: { prefs: Accessibilit
           <nav className="s-nav" aria-label="Principal">
             <NavLink to="/docs" end>Documentação</NavLink>
             <NavLink to="/docs/componentes">Componentes</NavLink>
+            <NavLink to="/docs/mobile">Mobile</NavLink>
             <NavLink to="/docs/fundacao">Fundação</NavLink>
             <NavLink to="/docs/acessibilidade">Acessibilidade</NavLink>
           </nav>
@@ -76,6 +77,7 @@ export function Footer() {
           <Link to="/docs/instalacao">Instalação</Link>
           <Link to="/docs/fundacao">Fundação</Link>
           <Link to="/docs/componentes">Componentes</Link>
+          <Link to="/docs/mobile">Mobile</Link>
         </div>
       </div>
     </footer>
